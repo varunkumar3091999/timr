@@ -41,6 +41,7 @@ class StopWatch extends React.Component {
 
 	 pauseStopWatch = () => {
 	 	clearInterval(this.myInterval)
+	 	document.getElementById("startStopWatch").disabled = false;
 	 }
 
 	 reset = () => {
@@ -48,10 +49,7 @@ class StopWatch extends React.Component {
 	 		counter: 0
 	 	})
 	 	clearInterval(this.myInterval)
-	 }
-
-	 enableStartButton = () => {
-		document.getElementById("start").disabled = false;
+	 	document.getElementById("startStopWatch").disabled = false;
 	 }
 	
 
