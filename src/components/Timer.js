@@ -30,8 +30,8 @@ class Timer extends React.Component {
 	startTimer = () => {
 
 		this.setState({
-			seconds: this.state.seconds || document.getElementById("timerSeconds").value,
-			minutes: this.state.Minutes || document.getElementById("timerMinutes").value,
+			seconds: this.state.seconds!==0?this.state.seconds:document.getElementById("timerSeconds").value,
+			minutes: this.state.minutes!==0?this.state.minutes:document.getElementById("timerMinutes").value,
 			// hours: this.state.hours || document.getElementById("timerHours").value
 		})
 			
@@ -42,8 +42,9 @@ class Timer extends React.Component {
 					// }
 					// if(this.state.minutes || this.state.seconds || this.state.hours > 0){
 					this.setState({
-						seconds: this.state.seconds==0?59:parseInt(this.state.seconds-1),
-						minutes: this.state.seconds==0?parseInt(this.state.minutes-1):this.state.minutes
+						seconds: this.state.seconds==0?5:parseInt(this.state.seconds-1),
+						minutes: this.state.hours > 0 && this.state.minutes==0?5:(this.state.seconds==0?parseInt(this.state.minutes-1):this.state.minutes),
+						hours: this.state.hours==0?0:(this.state.minutes==0?parseInt(this.state.hours-1):this.state.hours)
 					})
 					// }
 					document.getElementById("start").disabled = true;
@@ -57,11 +58,6 @@ class Timer extends React.Component {
 					 	})
 					}
 				}, 1000)
-
-	 	document.getElementById("timerSeconds").value = 0;
-
-
-
 
 	 }
 
@@ -84,7 +80,7 @@ class Timer extends React.Component {
 		this.setState({
 			seconds: document.getElementById("timerSeconds").value,
 			minutes: document.getElementById("timerMinutes").value,
-			// hours: document.getElementById("timerHours").value
+			hours: document.getElementById("timerHours").value
 		})
 
 
@@ -104,14 +100,14 @@ class Timer extends React.Component {
 		var {hours, seconds, minutes} = this.state;
 		return(
 			<div>
-				{/*<input 
+				<input 
 					type="number" 
 					id="timerHours" 
 					defaultValue={0}
 					max={59}
 					min={0}
 					onChange={this.enableStartButton}
-				/>*/}
+				/>
 				<input 
 					type="number" 
 					id="timerMinutes" 
@@ -128,7 +124,7 @@ class Timer extends React.Component {
 					min={0}
 					onChange={this.enableStartButton}
 				/>
-				<h1>{minutes +":"+ seconds} </h1>
+				<h1>{hours}:{minutes}:{seconds} </h1>
 				<button onClick={this.startTimer} id="start">Start</button>
 				<button onClick={this.pauseTimer}>pause</button>
 				<button onClick={this.reset}>reset</button>
