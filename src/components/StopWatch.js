@@ -5,7 +5,9 @@ class StopWatch extends React.Component {
 	constructor(props) {
 		super(props) 
 			this.state = {
-				counter: 0
+				seconds: 0,
+				minutes: 0,
+				hours: 0
 			}
 
 
@@ -15,55 +17,56 @@ class StopWatch extends React.Component {
 
 
 	componentDidMount() {
-
-		if(this.state.counter === 0) {
-			document.getElementById("start").disabled = true;
-		}
-
-		console.log(this.state.counter)
+		console.log(this.state.seconds)
 	}
 
 	startStopWatch = () => {
 
-	 	this.myInterval = setInterval(() => {
+	 		this.secondInterval = setInterval(() => {
 				this.setState({
-			    	counter: parseInt(this.state.counter + 1)
+			    	seconds: this.state.seconds===59?0:parseInt(this.state.seconds + 1)
 			    })
-
-
-				if(this.state.counter <= 0) {
-					clearInterval(this.myInterval)
-				}
 			}, 1000)
+
+	 		this.minutesInterval = setInterval(() => {
+	 			console.log(2)
+	 			this.setState({
+	 				minutes: this.state.minutes===59?0:parseInt(this.state.minutes + 1),
+	 			})
+	 		}, 60000)
+
+	 		this.hoursInterval = setInterval(() => {
+	 			this.setState({
+	 				hours: this.state.hours===59?0:parseInt(this.state.hours + 1),
+	 			})
+	 		}, 3600000)
 
 	 	document.getElementById("startStopWatch").disabled = true;
 	 }
 
 	 pauseStopWatch = () => {
-	 	clearInterval(this.myInterval)
+	 	clearInterval(this.secondInterval)
+	 	clearInterval(this.minutesInterval)
+	 	clearInterval(this.hoursInterval)
 	 	document.getElementById("startStopWatch").disabled = false;
 	 }
 
 	 reset = () => {
 	 	this.setState({
-	 		counter: 0
+	 		seconds: 0
 	 	})
-	 	clearInterval(this.myInterval)
+	 	clearInterval(this.secondInterval)
+	 	clearInterval(this.minutesInterval)
+	 	clearInterval(this.hoursInterval)
 	 	document.getElementById("startStopWatch").disabled = false;
 	 }
 	
 
 	render() {
-		var counter = this.state.counter;
+		var {hours, seconds, minutes} = this.state;
 		return(
 			<div>
-				{/*<input 
-					type="number" 
-					id="timer" 
-					defaultValue={0}
-					onChange={this.enableStartButton}
-				/>*/}
-				<h1>StopWatch: {counter} seconds</h1>
+				<h1>{hours} : {minutes} : {seconds}</h1>
 				<button onClick={this.startStopWatch} id="startStopWatch">Start</button>
 				<button onClick={this.pauseStopWatch}>pause</button>
 				<button onClick={this.reset}>reset</button>

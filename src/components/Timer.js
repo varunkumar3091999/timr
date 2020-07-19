@@ -5,9 +5,10 @@ class Timer extends React.Component {
 	constructor(props) {
 		super(props) 
 			this.state = {
-				count: 0
+				seconds: 59,
+				minutes: 0,
+				hours: 0
 			}
-
 			this.startTimer = this.startTimer.bind(this)
 	}
 
@@ -16,43 +17,73 @@ class Timer extends React.Component {
 	componentDidMount() {
 
 		this.setState({
-			count: document.getElementById("timer").value
+			seconds: document.getElementById("timerSeconds").value,
+			minutes: document.getElementById("timerMinutes").value,
+			// hours: document.getElementById("timerHours").value
 		})
-
-		if(this.state.count === 0) {
 			document.getElementById("start").disabled = true;
-		}
+			//button will be enabled when count is increased
 	}
 
 	startTimer = () => {
 
 		this.setState({
-			count: this.state.count || document.getElementById("timer").value
+			seconds: this.state.seconds || document.getElementById("timerSeconds").value,
+			minutes: this.state.Minutes || document.getElementById("timerMinutes").value,
+			// hours: this.state.hours || document.getElementById("timerHours").value
 		})
+			
+		this.secondsInterval = setInterval(() => {
+					// if(this.state.hours === 0){
+					// 	console.log("sjvnkjas")
+					// 	return
+					// }
+					// if(this.state.minutes || this.state.seconds || this.state.hours > 0){
+						console.log("sdlkndf")
+						this.setState({
+							seconds: this.state.seconds==0?59:parseInt(this.state.seconds-1),
+							minutes: this.state.seconds==0?parseInt(this.state.minutes-1):this.state.minutes
+					})
+					// }
+					console.log(this.state)
+					document.getElementById("start").disabled = true;
 
+					if(this.state.seconds < 1 && this.state.minutes < 1) {
+						clearInterval(this.secondsInterval)
+					}
+				}, 1000)
+			 
+	 	
 
-	 	this.myInterval = setInterval(() => {
-				this.setState({
-					count: this.state.count - 1
-				})
-				document.getElementById("start").disabled = true;
+	 	// this.minutesInterval = setInterval(() => {
+			// 	if(this.state.minutes === 0){
+			// 		return
+			// 	}
+			// 	this.setState({
+			// 			minutes: this.state.minutes - 1
+			// 	})
+			// 	document.getElementById("start").disabled = true;
 
-				if(this.state.count <= 0) {
-					clearInterval(this.myInterval)
-				}
-			}, 1000)
+			// 	if(this.state.minutes < 1) {
+			// 		clearInterval(this.minutesInterval)
+			// 		console.log("clearinterval")
+			// 	}
+				
+			// }, 60000)
 
-	 	document.getElementById("timer").value = null;
+	 	document.getElementById("timerSeconds").value = null;
 	 }
 
 	 pauseTimer = () => {
-	 	clearInterval(this.myInterval)
+	 	clearInterval(this.secondsInterval)
+	 	clearInterval(this.minutesInterval)
 	 	document.getElementById("start").disabled = false;
 	 }
 
 	 reset = () => {
 	 	this.setState({
-	 		count: 0
+	 		seconds: 0,
+	 		minutes: 0
 	 	})
 	 }
 
@@ -60,22 +91,42 @@ class Timer extends React.Component {
 		document.getElementById("start").disabled = false;
 
 		this.setState({
-			count: document.getElementById("timer").value
+			seconds: document.getElementById("timerSeconds").value,
+			minutes: document.getElementById("timerMinutes").value,
+			// hours: document.getElementById("timerHours").value
 		})
 	 }
 	
 
 	render() {
-		var count = this.state.count;
+		var {hours, seconds, minutes} = this.state;
 		return(
 			<div>
+				{/*<input 
+					type="number" 
+					id="timerHours" 
+					defaultValue={0}
+					max={59}
+					min={0}
+					onChange={this.enableStartButton}
+				/>*/}
 				<input 
 					type="number" 
-					id="timer" 
+					id="timerMinutes" 
 					defaultValue={0}
+					max={59}
+					min={0}
 					onChange={this.enableStartButton}
 				/>
-				<h1>Timer: {count} seconds</h1>
+				<input 
+					type="number" 
+					id="timerSeconds" 
+					defaultValue={0}
+					max={59}
+					min={0}
+					onChange={this.enableStartButton}
+				/>
+				<h1>{minutes +":"+ seconds} </h1>
 				<button onClick={this.startTimer} id="start">Start</button>
 				<button onClick={this.pauseTimer}>pause</button>
 				<button onClick={this.reset}>reset</button>

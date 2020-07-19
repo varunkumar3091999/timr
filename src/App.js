@@ -1,5 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route } from "react-router-dom";
+
+
 import './App.css';
 
 
@@ -14,10 +16,21 @@ class App  extends React.Component {
   render() {
 
     return(
-     <div>
-       <Timer />
-        <StopWatch />
-     </div>
+      <BrowserRouter>
+        <div>
+          <Route 
+            exact
+            path="/timer"
+            component={Timer}
+            />
+            <Route 
+            exact
+            path="/stopWatch"
+            component={StopWatch}
+            />
+        </div>
+      </BrowserRouter>
+     
   )
 }
 }
