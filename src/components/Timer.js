@@ -23,6 +23,8 @@ class Timer extends React.Component {
 		})
 			document.getElementById("start").disabled = true;
 			//button will be enabled when count is increased
+
+
 	}
 
 	startTimer = () => {
@@ -39,39 +41,28 @@ class Timer extends React.Component {
 					// 	return
 					// }
 					// if(this.state.minutes || this.state.seconds || this.state.hours > 0){
-						console.log("sdlkndf")
-						this.setState({
-							seconds: this.state.seconds==0?59:parseInt(this.state.seconds-1),
-							minutes: this.state.seconds==0?parseInt(this.state.minutes-1):this.state.minutes
+					this.setState({
+						seconds: this.state.seconds==0?59:parseInt(this.state.seconds-1),
+						minutes: this.state.seconds==0?parseInt(this.state.minutes-1):this.state.minutes
 					})
 					// }
-					console.log(this.state)
 					document.getElementById("start").disabled = true;
 
 					if(this.state.seconds < 1 && this.state.minutes < 1) {
 						clearInterval(this.secondsInterval)
+						
+							//show notification
+					 	const notification = new Notification("Time Out!!", {
+					 		body: "Time set on timR has ended"
+					 	})
 					}
 				}, 1000)
-			 
-	 	
 
-	 	// this.minutesInterval = setInterval(() => {
-			// 	if(this.state.minutes === 0){
-			// 		return
-			// 	}
-			// 	this.setState({
-			// 			minutes: this.state.minutes - 1
-			// 	})
-			// 	document.getElementById("start").disabled = true;
+	 	document.getElementById("timerSeconds").value = 0;
 
-			// 	if(this.state.minutes < 1) {
-			// 		clearInterval(this.minutesInterval)
-			// 		console.log("clearinterval")
-			// 	}
-				
-			// }, 60000)
 
-	 	document.getElementById("timerSeconds").value = null;
+
+
 	 }
 
 	 pauseTimer = () => {
@@ -95,6 +86,17 @@ class Timer extends React.Component {
 			minutes: document.getElementById("timerMinutes").value,
 			// hours: document.getElementById("timerHours").value
 		})
+
+
+
+		//Checking if the user gave access the the notificationsNotifications
+		 	if(Notification.permissiont === "granted") {
+		 		alert("we have permission");
+		 	} else if(Notification.permission !== "denied"){
+		 		Notification.requestPermission().then((permission) => {
+		 			console.log(permission)
+		 		})
+		 	}	
 	 }
 	
 

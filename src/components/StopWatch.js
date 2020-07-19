@@ -22,10 +22,20 @@ class StopWatch extends React.Component {
 
 	startStopWatch = () => {
 
+			//Checking if the user gave access the the notificationsNotifications
+		 	if(Notification.permissiont === "granted") {
+		 		alert("we have permission");
+		 	} else if(Notification.permission !== "denied"){
+		 		Notification.requestPermission().then((permission) => {
+		 			console.log(permission)
+		 		})
+		 	}	
+
 	 		this.secondInterval = setInterval(() => {
 				this.setState({
 			    	seconds: this.state.seconds===59?0:parseInt(this.state.seconds + 1)
 			    })
+
 			}, 1000)
 
 	 		this.minutesInterval = setInterval(() => {
@@ -37,8 +47,12 @@ class StopWatch extends React.Component {
 
 	 		this.hoursInterval = setInterval(() => {
 	 			this.setState({
-	 				hours: this.state.hours===59?0:parseInt(this.state.hours + 1),
+	 				hours: parseInt(this.state.hours + 1),
 	 			})
+	 			//show notification
+			 	const notification = new Notification("One Hour!", {
+					 body: `${this.state.hours} hour(s) has beed passed `
+			 	})
 	 		}, 3600000)
 
 	 	document.getElementById("startStopWatch").disabled = true;

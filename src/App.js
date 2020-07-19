@@ -20,7 +20,7 @@ class App  extends React.Component {
         <div>
           <Route 
             exact
-            path="/timer"
+            path="/"
             component={Timer}
             />
             <Route 
