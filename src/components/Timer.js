@@ -1,5 +1,7 @@
 import React from "react";
 
+import "../App.css"
+
 
 class Timer extends React.Component {
 	constructor(props) {
@@ -19,9 +21,11 @@ class Timer extends React.Component {
 		this.setState({
 			seconds: document.getElementById("timerSeconds").value,
 			minutes: document.getElementById("timerMinutes").value,
-			// hours: document.getElementById("timerHours").value
+			hours: document.getElementById("timerHours").value
 		})
 			document.getElementById("start").disabled = true;
+			document.getElementById("pause").disabled = true;
+			document.getElementById("reset").disabled = true;
 			//button will be enabled when count is increased
 
 
@@ -32,7 +36,7 @@ class Timer extends React.Component {
 		this.setState({
 			seconds: this.state.seconds!==0?this.state.seconds:document.getElementById("timerSeconds").value,
 			minutes: this.state.minutes!==0?this.state.minutes:document.getElementById("timerMinutes").value,
-			// hours: this.state.hours || document.getElementById("timerHours").value
+			hours: 	 this.state.hours!==0?this.state.hours:document.getElementById("timerHours").value,
 		})
 			
 		this.secondsInterval = setInterval(() => {
@@ -42,8 +46,8 @@ class Timer extends React.Component {
 					// }
 					// if(this.state.minutes || this.state.seconds || this.state.hours > 0){
 					this.setState({
-						seconds: this.state.seconds==0?5:parseInt(this.state.seconds-1),
-						minutes: this.state.hours > 0 && this.state.minutes==0?5:(this.state.seconds==0?parseInt(this.state.minutes-1):this.state.minutes),
+						seconds: this.state.seconds==0?59:parseInt(this.state.seconds-1),
+						minutes: this.state.hours > 0 && this.state.minutes==0?59:(this.state.seconds==0?parseInt(this.state.minutes-1):this.state.minutes),
 						hours: this.state.hours==0?0:(this.state.minutes==0?parseInt(this.state.hours-1):this.state.hours)
 					})
 					// }
@@ -54,7 +58,8 @@ class Timer extends React.Component {
 						
 							//show notification
 					 	const notification = new Notification("Time Out!!", {
-					 		body: "Time set on timR has ended"
+					 		body: "Time set on timR has ended",
+					 		icon: require("../images/logo.png")
 					 	})
 
 					 	Notification.onClick = (e) => {
@@ -68,18 +73,23 @@ class Timer extends React.Component {
 	 pauseTimer = () => {
 	 	clearInterval(this.secondsInterval)
 	 	clearInterval(this.minutesInterval)
+	 	clearInterval(this.hoursInterval)
 	 	document.getElementById("start").disabled = false;
 	 }
 
 	 reset = () => {
 	 	this.setState({
-	 		seconds: 0,
-	 		minutes: 0
+	 		seconds: "00",
+	 		minutes: "00",
+	 		hours: "00"
 	 	})
+	 	clearInterval(this.secondsInterval)
 	 }
 
 	 enableStartButton = () => {
 		document.getElementById("start").disabled = false;
+		document.getElementById("pause").disabled = false;
+		document.getElementById("reset").disabled = false;
 
 		this.setState({
 			seconds: document.getElementById("timerSeconds").value,
@@ -104,34 +114,53 @@ class Timer extends React.Component {
 		var {hours, seconds, minutes} = this.state;
 		return(
 			<div>
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+				<img src={require("../images/logo.png")} alt="logo" className="logo"  />
+
 				<input 
 					type="number" 
 					id="timerHours" 
-					defaultValue={0}
+					defaultValue="00"
 					max={59}
 					min={0}
 					onChange={this.enableStartButton}
+					className="input"
 				/>
 				<input 
 					type="number" 
 					id="timerMinutes" 
-					defaultValue={0}
+					defaultValue="00"
 					max={59}
 					min={0}
 					onChange={this.enableStartButton}
+					className="input"
 				/>
 				<input 
 					type="number" 
 					id="timerSeconds" 
-					defaultValue={0}
+					defaultValue="00"
 					max={59}
 					min={0}
 					onChange={this.enableStartButton}
+					className="input"
 				/>
 				<h1>{hours}:{minutes}:{seconds} </h1>
-				<button onClick={this.startTimer} id="start">Start</button>
-				<button onClick={this.pauseTimer}>pause</button>
-				<button onClick={this.reset}>reset</button>
+				<button 
+					onClick={this.startTimer} 
+					id="start"
+					className="button"
+				><i className="fa fa-play" aria-hidden="true"/></button>
+				<button 
+					id="pause"
+					onClick={this.pauseTimer}
+					className="button"
+				><i className="fa fa-pause" aria-hidden="true" /></button>
+				<button 
+					onClick={this.reset}
+					id="reset"
+					className="button"
+				><i className="fa fa-refresh" aria-hidden="true" /></button>
 			</div>
 		)
 	}

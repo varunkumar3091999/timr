@@ -1,5 +1,7 @@
 import React from "react";
 
+import "../App.css";
+// @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
 class StopWatch extends React.Component {
 	constructor(props) {
@@ -84,10 +86,25 @@ class StopWatch extends React.Component {
 		var {hours, seconds, minutes} = this.state;
 		return(
 			<div>
+
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+				
+				<img src={require("../images/logo.png")} alt="logo" className="logo"  />
+
 				<h1>{hours} : {minutes} : {seconds}</h1>
-				<button onClick={this.startStopWatch} id="startStopWatch">Start</button>
-				<button onClick={this.pauseStopWatch}>pause</button>
-				<button onClick={this.reset}>reset</button>
+				<button 
+					onClick={this.startStopWatch} 
+					id="startStopWatch"
+					className="button"
+				><i class="fa fa-play" aria-hidden="true"></i></button>
+				<button 
+					onClick={this.pauseStopWatch}
+					className="button"
+				><i class="fa fa-pause" aria-hidden="true"></i></button>
+				<button 
+					onClick={this.reset}
+					className="button"
+				><i class="fa fa-refresh" aria-hidden="true"></i></button>
 			</div>
 		)
 	}

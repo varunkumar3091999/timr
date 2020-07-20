@@ -17,7 +17,7 @@ class App  extends React.Component {
 
     return(
       <BrowserRouter>
-        <div>
+        <div className="App">
           <Route 
             exact
             path="/"
