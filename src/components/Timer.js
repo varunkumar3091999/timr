@@ -56,6 +56,10 @@ class Timer extends React.Component {
 					 	const notification = new Notification("Time Out!!", {
 					 		body: "Time set on timR has ended"
 					 	})
+
+					 	Notification.onClick = (e) => {
+					 		window.location.href = "/"
+					 	}
 					}
 				}, 1000)
 

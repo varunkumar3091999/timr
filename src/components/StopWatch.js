@@ -53,6 +53,10 @@ class StopWatch extends React.Component {
 			 	const notification = new Notification("One Hour!", {
 					 body: `${this.state.hours} hour(s) has beed passed `
 			 	})
+
+			 	Notification.onClick = (e) => {
+					 window.location.href = "/StopWatch"
+				}
 	 		}, 3600000)
 
 	 	document.getElementById("startStopWatch").disabled = true;
