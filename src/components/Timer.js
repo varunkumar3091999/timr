@@ -83,6 +83,10 @@ class Timer extends React.Component {
 	 		minutes: "00",
 	 		hours: "00"
 	 	})
+
+	 	document.getElementById("timerSeconds").value = 0
+	 	document.getElementById("timerMinutes").value = 0
+	 	document.getElementById("timerHours").value = 0
 	 	clearInterval(this.secondsInterval)
 	 }
 
@@ -121,7 +125,7 @@ class Timer extends React.Component {
 				<input 
 					type="number" 
 					id="timerHours" 
-					defaultValue="00"
+					defaultValue={0}
 					max={59}
 					min={0}
 					onChange={this.enableStartButton}
@@ -130,7 +134,7 @@ class Timer extends React.Component {
 				<input 
 					type="number" 
 					id="timerMinutes" 
-					defaultValue="00"
+					defaultValue={0}
 					max={59}
 					min={0}
 					onChange={this.enableStartButton}
@@ -139,13 +143,21 @@ class Timer extends React.Component {
 				<input 
 					type="number" 
 					id="timerSeconds" 
-					defaultValue="00"
+					defaultValue={0}
 					max={59}
 					min={0}
 					onChange={this.enableStartButton}
 					className="input"
 				/>
-				<h1>{hours}:{minutes}:{seconds} </h1>
+				<h1 className="h1">{hours}  :  {minutes}  :  {seconds} </h1>
+
+
+
+				<div>
+				</div>
+
+
+
 				<button 
 					onClick={this.startTimer} 
 					id="start"

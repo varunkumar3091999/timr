@@ -91,7 +91,7 @@ class StopWatch extends React.Component {
 				
 				<img src={require("../images/logo.png")} alt="logo" className="logo"  />
 
-				<h1>{hours} : {minutes} : {seconds}</h1>
+				<h1 className="h1">{hours} : {minutes} : {seconds}</h1>
 				<button 
 					onClick={this.startStopWatch} 
 					id="startStopWatch"
