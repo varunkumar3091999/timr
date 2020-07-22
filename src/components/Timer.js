@@ -43,6 +43,15 @@ class Timer extends React.Component {
 					document.getElementById("start").disabled = true;
 					document.getElementById("pause").disabled = false;
 
+					//disabling increment decrement buttons when timer is running
+					var elements = document.getElementsByClassName("incDec");
+
+						for (var i = 0; i < elements.length; i++) {
+  							elements[i].disabled =true;
+						}
+					//
+
+
 					if(this.state.seconds < 1 && this.state.minutes < 1) {
 						clearInterval(this.secondsInterval)
 						
@@ -65,6 +74,7 @@ class Timer extends React.Component {
 	 	clearInterval(this.minutesInterval)
 	 	clearInterval(this.hoursInterval)
 	 	document.getElementById("start").disabled = false;
+	 	document.getElementById("pause").disabled = true;
 	 }
 
 	 reset = () => {
@@ -74,8 +84,19 @@ class Timer extends React.Component {
 	 		hours: "00"
 	 	})
 	 	clearInterval(this.secondsInterval);
+
+	 	// disabling play pause reset when all values are 0
 	 	document.getElementById("start").disabled = true;
+	 	document.getElementById("pause").disabled = true;
 	 	document.getElementById("reset").disabled = true;
+	 	//
+
+	 	//enabling increment decrement button when timer is reset
+	 	var elements = document.getElementsByClassName("incDec");
+			for (var i = 0; i < elements.length; i++) {
+					elements[i].disabled =false;
+			}
+		//
 	 }
 
 	 secondsInc = () => {
