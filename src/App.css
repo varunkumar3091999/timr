@@ -39,6 +39,7 @@
 
   border-radius: 20px;
   margin:0 3rem;
+  margin-top: 3rem;
   box-shadow:  .3rem .5rem  .8rem black;
   transition: all .2s;
   width: 3%;
@@ -58,6 +59,22 @@ button:disabled {
   box-shadow: none;
 }
 
+
+.incDec {
+  border: none;
+  height: 3rem;
+  cursor: pointer;
+  border-radius: 20px;
+  margin:0 1rem;
+  /*box-shadow:  .3rem .5rem  .8rem black;*/
+  background-color: transparent;
+  color: black;
+  font-size: 2rem;
+  transition: all .2s;
+  width: 3rem;
+}
+
+
 .logo {
   /*position: relative;
   top: -70%;
@@ -76,6 +93,12 @@ button:disabled {
   text-shadow: .3rem .5rem  .3rem black;
   cursor: default;
   font-size: 4rem;
+}
+
+
+.timer {
+  display: flex;
+  justify-content: center;
 }
 
 /*media queries*/

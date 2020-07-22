@@ -7,7 +7,7 @@ class Timer extends React.Component {
 	constructor(props) {
 		super(props) 
 			this.state = {
-				seconds: 59,
+				seconds: 0,
 				minutes: 0,
 				hours: 0
 			}
@@ -18,27 +18,16 @@ class Timer extends React.Component {
 
 	componentDidMount() {
 
-		this.setState({
-			seconds: document.getElementById("timerSeconds").value,
-			minutes: document.getElementById("timerMinutes").value,
-			hours: document.getElementById("timerHours").value
-		})
+
+			//disabling buttons when everything in 0
 			document.getElementById("start").disabled = true;
 			document.getElementById("pause").disabled = true;
 			document.getElementById("reset").disabled = true;
-			//button will be enabled when count is increased
-
-
 	}
 
 	startTimer = () => {
 
-		this.setState({
-			seconds: this.state.seconds!==0?this.state.seconds:document.getElementById("timerSeconds").value,
-			minutes: this.state.minutes!==0?this.state.minutes:document.getElementById("timerMinutes").value,
-			hours: 	 this.state.hours!==0?this.state.hours:document.getElementById("timerHours").value,
-		})
-			
+		
 		this.secondsInterval = setInterval(() => {
 					// if(this.state.hours === 0){
 					// 	console.log("sjvnkjas")
@@ -52,6 +41,7 @@ class Timer extends React.Component {
 					})
 					// }
 					document.getElementById("start").disabled = true;
+					document.getElementById("pause").disabled = false;
 
 					if(this.state.seconds < 1 && this.state.minutes < 1) {
 						clearInterval(this.secondsInterval)
@@ -83,34 +73,48 @@ class Timer extends React.Component {
 	 		minutes: "00",
 	 		hours: "00"
 	 	})
-
-	 	document.getElementById("timerSeconds").value = 0
-	 	document.getElementById("timerMinutes").value = 0
-	 	document.getElementById("timerHours").value = 0
-	 	clearInterval(this.secondsInterval)
+	 	clearInterval(this.secondsInterval);
+	 	document.getElementById("start").disabled = true;
+	 	document.getElementById("reset").disabled = true;
 	 }
 
-	 enableStartButton = () => {
-		document.getElementById("start").disabled = false;
-		document.getElementById("pause").disabled = false;
+	 secondsInc = () => {
+	 	this.setState({
+	 		seconds: parseInt(this.state.seconds + 1)
+	 	})
+	 	document.getElementById("start").disabled = false;
 		document.getElementById("reset").disabled = false;
+	 }
+	 secondsDec = () => {
+	 	this.setState({
+	 		seconds: parseInt(this.state.seconds - 1)
+	 	})
+	 }
 
-		this.setState({
-			seconds: document.getElementById("timerSeconds").value,
-			minutes: document.getElementById("timerMinutes").value,
-			hours: document.getElementById("timerHours").value
-		})
+	 minutesInc = () => {
+	 	this.setState({
+	 		minutes: parseInt(this.state.minutes + 1)
+	 	})
+	 	document.getElementById("start").disabled = false;
+		document.getElementById("reset").disabled = false;
+	 }
+	 minutesDec = () => {
+	 	this.setState({
+	 		minutes: parseInt(this.state.minutes - 1)
+	 	})
+	 }
 
-
-
-		//Checking if the user gave access the the notificationsNotifications
-		 	if(Notification.permissiont === "granted") {
-		 		alert("we have permission");
-		 	} else if(Notification.permission !== "denied"){
-		 		Notification.requestPermission().then((permission) => {
-		 			console.log(permission)
-		 		})
-		 	}	
+	 hoursInc = () => {
+	 	this.setState({
+	 		hours: parseInt(this.state.hours + 1)
+	 	})
+	 	document.getElementById("start").disabled = false;
+		document.getElementById("reset").disabled = false;
+	 }
+	 hoursDec = () => {
+	 	this.setState({
+	 		hours: parseInt(this.state.hours - 1)
+	 	})
 	 }
 	
 
@@ -122,38 +126,22 @@ class Timer extends React.Component {
 
 				<img src={require("../images/logo.png")} alt="logo" className="logo"  />
 
-				<input 
-					type="number" 
-					id="timerHours" 
-					defaultValue={0}
-					max={59}
-					min={0}
-					onChange={this.enableStartButton}
-					className="input"
-				/>
-				<input 
-					type="number" 
-					id="timerMinutes" 
-					defaultValue={0}
-					max={59}
-					min={0}
-					onChange={this.enableStartButton}
-					className="input"
-				/>
-				<input 
-					type="number" 
-					id="timerSeconds" 
-					defaultValue={0}
-					max={59}
-					min={0}
-					onChange={this.enableStartButton}
-					className="input"
-				/>
-				<h1 className="h1">{hours}  :  {minutes}  :  {seconds} </h1>
-
-
-
-				<div>
+				<div className="timer">
+					<div>
+						<button onClick={this.hoursInc} className="incDec"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+						<h1 className="h1">{hours}</h1>
+						<button onClick={this.hoursDec} className="incDec"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+					</div>
+					<div>
+						<button onClick={this.minutesInc} className="incDec"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+						<h1 className="h1"> :  {minutes} : </h1>
+						<button onClick={this.minutesDec} className="incDec"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+					</div>
+					<div>
+						<button onClick={this.secondsInc} className="incDec"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+						<h1 className="h1">{seconds}</h1>
+						<button onClick={this.secondsDec} className="incDec"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+					</div>
 				</div>
 
 
