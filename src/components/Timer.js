@@ -62,7 +62,7 @@ class Timer extends React.Component {
 						clearInterval(this.secondsInterval)
 						
 							//show notification
-					 	Notification("Time Out!!", {
+					 new	Notification("Time Out!!", {
 					 		body: "Time set on timR has ended",
 					 		icon: require("../images/logo.png")
 					 	})
