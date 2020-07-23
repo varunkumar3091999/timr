@@ -60,6 +60,10 @@ class Timer extends React.Component {
 
 					if(this.state.seconds < 1 && this.state.minutes < 1) {
 						clearInterval(this.secondsInterval)
+
+						document.getElementById("start").disabled = true;
+					 	document.getElementById("pause").disabled = true;
+					 	document.getElementById("reset").disabled = true;
 						
 							//show notification
 					 new	Notification("Time Out!!", {
@@ -75,12 +79,21 @@ class Timer extends React.Component {
 
 	 }
 
-	 pauseTimer = () => {
+	 pauseTimer = ( {seconds, minutes, hours}) => {
+
+	 	// this.state =
+
 	 	clearInterval(this.secondsInterval)
 	 	clearInterval(this.minutesInterval)
 	 	clearInterval(this.hoursInterval)
 	 	document.getElementById("start").disabled = false;
 	 	document.getElementById("pause").disabled = true;
+
+	 	if(hours===0 && minutes===0 &seconds===0) {
+	 		document.getElementById("start").disabled = true;
+	 	}
+
+
 	 }
 
 	 reset = () => {
