@@ -33,6 +33,15 @@ class Timer extends React.Component {
 
 	startTimer = () => {
 
+		//Checking if the user gave access the the notificationsNotifications
+		 	if(Notification.permissiont === "granted") {
+		 		alert("we have permission");
+		 	} else if(Notification.permission !== "denied"){
+		 		Notification.requestPermission().then((permission) => {
+		 			console.log(permission)
+		 		})
+		 	}	
+
 		if(this.state.hours===0 && this.state.minutes===0 && this.state.seconds===0) {
 	 		return
 	 	}
@@ -65,12 +74,12 @@ class Timer extends React.Component {
 					 	document.getElementById("reset").disabled = true;
 						
 							//show notification
-					 new	Notification("Time Out!!", {
+					const notification =  new Notification("Time Out!!", {
 					 		body: "Time set on timR has ended",
 					 		icon: require("../images/logo.png")
 					 	})
 
-					 	Notification.onClick = (e) => {
+					 	notification.onClick = (e) => {
 					 		window.location.href = "/"
 					 	}
 					}
