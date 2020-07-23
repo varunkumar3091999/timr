@@ -7,12 +7,13 @@
 .App {
 
   padding-top: 30vh;
-
+  
   height: 100vh;
   width: 100vw;
 
   text-align: center;
   background:  #5F4A70;
+
 
 }
 
@@ -99,13 +100,15 @@ button:disabled {
   color: #eee;
   font-size: 2rem;
   font-weight: 900;
-  
+  padding-left: 50rem;
+  /*padding-top: -30rem;*/
 }
 
 
 .timer {
   display: flex;
   justify-content: center;
+  /*padding-bottom: 30rem;*/
 }
 
 /*media queries*/

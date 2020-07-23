@@ -179,7 +179,7 @@ class Timer extends React.Component {
 
 				<img src={require("../images/logo.png")} alt="logo" className="logo"  />
 				<div>
-					<Link to="/stopwatch" className="Link">Stop watch<i class="fa fa-link" aria-hidden="true"></i></Link>
+					<Link to="/stopwatch" className="Link">to Stopwatch<i className="fa fa-link" aria-hidden="true"></i></Link>
 				</div>
 				<div className="timer">
 					<div>
@@ -216,6 +216,8 @@ class Timer extends React.Component {
 					id="reset"
 					className="button"
 				><i className="fa fa-refresh" aria-hidden="true" /></button>
+
+				
 			</div>
 		)
 	}

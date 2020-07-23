@@ -92,23 +92,27 @@ class StopWatch extends React.Component {
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 				
 				<img src={require("../images/logo.png")} alt="logo" className="logo"  />
+
 				<div>
-					<Link to="/" className="Link">Timer<i class="fa fa-link" aria-hidden="true"></i></Link>
+					<Link to="/" className="Link">to Timer<i className="fa fa-link" aria-hidden="true"></i></Link>
 				</div>
+				
 				<h1 className="h1">{hours} : {minutes} : {seconds}</h1>
 				<button 
 					onClick={this.startStopWatch} 
 					id="startStopWatch"
 					className="button"
-				><i class="fa fa-play" aria-hidden="true"></i></button>
+				><i className="fa fa-play" aria-hidden="true"></i></button>
 				<button 
 					onClick={this.pauseStopWatch}
 					className="button"
-				><i class="fa fa-pause" aria-hidden="true"></i></button>
+				><i className="fa fa-pause" aria-hidden="true"></i></button>
 				<button 
 					onClick={this.reset}
 					className="button"
-				><i class="fa fa-refresh" aria-hidden="true"></i></button>
+				><i className="fa fa-refresh" aria-hidden="true"></i></button>
+
+				
 			</div>
 		)
 	}
