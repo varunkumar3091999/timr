@@ -188,7 +188,7 @@ button:disabled {
   }
 }
 
-/*@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 675px) {
 
 
   .input {
@@ -208,9 +208,13 @@ button:disabled {
   .h1 {
     font-size: 8rem;
     margin: 0;
-    margin-top: 5rem;
+    /*margin-top: 5rem;*/
   }
-}*/
+
+  .button {
+    margin-top: 2rem;
+  }
+}
 
 @media only screen and (max-width: 600px) {
 
@@ -244,6 +248,10 @@ button:disabled {
     height: 6rem;
     font-size: 5rem;
     margin-top: -10rem;
+  }
+
+  .App {
+    padding-top: 20rem;
   }
 
   /*.button {
