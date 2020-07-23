@@ -149,19 +149,19 @@ class Timer extends React.Component {
 
 				<div className="timer">
 					<div>
-						<button onClick={this.hoursInc} className="incDec"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+						<button onClick={this.hoursInc} className="incDec"><i className="fa fa-caret-up" aria-hidden="true"></i></button>
 						<h1 className="h1">{hours}</h1>
-						<button onClick={this.hoursDec} className="incDec"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+						<button onClick={this.hoursDec} className="incDec"><i className="fa fa-caret-down" aria-hidden="true"></i></button>
 					</div>
 					<div>
-						<button onClick={this.minutesInc} className="incDec"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
-						<h1 className="h1"> :  {minutes} : </h1>
-						<button onClick={this.minutesDec} className="incDec"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+						<button onClick={this.minutesInc} className="incDec"><i className="fa fa-caret-up" aria-hidden="true"></i></button>
+						<h1 className="h1">:{minutes}:</h1>
+						<button onClick={this.minutesDec} className="incDec"><i className="fa fa-caret-down" aria-hidden="true"></i></button>
 					</div>
 					<div>
-						<button onClick={this.secondsInc} className="incDec"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+						<button onClick={this.secondsInc} className="incDec"><i className="fa fa-caret-up" aria-hidden="true"></i></button>
 						<h1 className="h1">{seconds}</h1>
-						<button onClick={this.secondsDec} className="incDec"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+						<button onClick={this.secondsDec} className="incDec"><i className="fa fa-caret-down" aria-hidden="true"></i></button>
 					</div>
 				</div>
 

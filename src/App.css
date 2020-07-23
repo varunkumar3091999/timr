@@ -64,14 +64,13 @@ button:disabled {
   border: none;
   height: 3rem;
   cursor: pointer;
-  border-radius: 20px;
   margin:0 1rem;
   /*box-shadow:  .3rem .5rem  .8rem black;*/
   background-color: transparent;
   color: black;
   font-size: 2rem;
-  transition: all .2s;
   width: 3rem;
+  
 }
 
 
@@ -102,6 +101,116 @@ button:disabled {
 }
 
 /*media queries*/
+/*@media only screen and (max-width: 1100px) {
+
+
+  .input {
+    width: 8rem;
+    height: 6rem;
+    font-size: 5rem;
+    margin-top: -10rem;
+  }
+
+  .button {
+    height: 4rem;
+    width: 4rem;
+
+    margin-top: 10rem;
+  } 
+
+  .h1 {
+    font-size: 10rem;
+    margin: 0;
+    margin-top: 5rem;
+  }
+
+  .incDec {
+    font-size: 4rem;
+  }
+}*/
+
+@media only screen and (max-width: 800px) {
+
+
+  .input {
+    width: 8rem;
+    height: 6rem;
+    font-size: 5rem;
+    margin-top: -10rem;
+  }
+
+  .button {
+    height: 4rem;
+    width: 4rem;
+
+    margin-top: 10rem;
+  } 
+
+  .h1 {
+    font-size: 10rem;
+    margin: auto;
+    /*margin-top: 5rem;*/
+  }
+
+  .incDec {
+    font-size: 4rem;
+  }
+}
+
+
+@media only screen and (max-width: 750px) {
+
+.App {
+  padding-top: 3rem;
+}
+ /* .input {
+    width: 8rem;
+    height: 6rem;
+    font-size: 5rem;
+    margin-top: -10rem;
+  }*/
+
+  .button {
+    height: 4rem;
+    width: 4rem;
+
+    /*margin-top: 10rem;*/
+  } 
+
+  .h1 {
+    font-size: 7rem;
+    margin: auto;
+    /*margin-top: 5rem;*/
+  }
+
+  .incDec {
+    font-size: 4rem;
+  }
+}
+
+/*@media only screen and (max-width: 600px) {
+
+
+  .input {
+    width: 4rem;
+    height: 8rem;
+    font-size: 3rem;
+    margin-top: -10rem;
+  }
+
+  .button {
+    height: 4rem;
+    width: 4rem;
+
+    margin-top: 10rem;
+  } 
+
+  .h1 {
+    font-size: 8rem;
+    margin: 0;
+    margin-top: 5rem;
+  }
+}*/
 
 @media only screen and (max-width: 600px) {
 
@@ -152,29 +261,26 @@ button:disabled {
 
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 449px) {
 
 
-  .input {
-    width: 4rem;
-    height: 8rem;
-    font-size: 3rem;
-    margin-top: -10rem;
-  }
+  
 
-  .button {
-    height: 4rem;
-    width: 4rem;
-
-    margin-top: 10rem;
-  } 
+  
 
   .h1 {
-    font-size: 8rem;
-    margin: 0;
-    margin-top: 5rem;
+    font-size: 10rem;
+    margin: auto;
+    margin-top: 0;
+  }
+
+  .incDec {
+    font-size: 4rem;
   }
 }
+
+
+
 
 @media only screen and (max-width: 300px) {
 
