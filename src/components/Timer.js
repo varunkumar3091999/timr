@@ -33,13 +33,12 @@ class Timer extends React.Component {
 
 	startTimer = () => {
 
+		if(this.state.hours===0 && this.state.minutes===0 && this.state.seconds===0) {
+	 		return
+	 	}
 		
 		this.secondsInterval = setInterval(() => {
-					// if(this.state.hours === 0){
-					// 	console.log("sjvnkjas")
-					// 	return
-					// }
-					// if(this.state.minutes || this.state.seconds || this.state.hours > 0){
+					
 					this.setState({
 						seconds: this.state.seconds===0?59:parseInt(this.state.seconds-1),
 						minutes: this.state.hours > 0 && this.state.minutes===0?59:(this.state.seconds===0?parseInt(this.state.minutes-1):this.state.minutes),
