@@ -72,6 +72,14 @@ class Timer extends React.Component {
 						document.getElementById("start").disabled = true;
 					 	document.getElementById("pause").disabled = true;
 					 	document.getElementById("reset").disabled = true;
+
+					 	//disabling increment decrement buttons when timer is running
+					var element = document.getElementsByClassName("incDec");
+
+						for (var j = 0; j < element.length; j++) {
+  							element[j].disabled =false;
+						}
+					//
 						
 							//show notification
 					const notification =  new Notification("Time Out!!", {
