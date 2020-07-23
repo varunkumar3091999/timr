@@ -52,7 +52,7 @@ class StopWatch extends React.Component {
 	 				hours: parseInt(this.state.hours + 1),
 	 			})
 	 			//show notification
-			 	const notification = new Notification("One Hour!", {
+			 	Notification("One Hour!", {
 					 body: `${this.state.hours} hour(s) has beed passed `
 			 	})
 

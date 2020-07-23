@@ -35,9 +35,9 @@ class Timer extends React.Component {
 					// }
 					// if(this.state.minutes || this.state.seconds || this.state.hours > 0){
 					this.setState({
-						seconds: this.state.seconds==0?59:parseInt(this.state.seconds-1),
-						minutes: this.state.hours > 0 && this.state.minutes==0?59:(this.state.seconds==0?parseInt(this.state.minutes-1):this.state.minutes),
-						hours: this.state.hours==0?0:(this.state.minutes==0?parseInt(this.state.hours-1):this.state.hours)
+						seconds: this.state.seconds===0?59:parseInt(this.state.seconds-1),
+						minutes: this.state.hours > 0 && this.state.minutes===0?59:(this.state.seconds===0?parseInt(this.state.minutes-1):this.state.minutes),
+						hours: this.state.hours===0?0:(this.state.minutes===0?parseInt(this.state.hours-1):this.state.hours)
 					})
 					// }
 					document.getElementById("start").disabled = true;
@@ -56,7 +56,7 @@ class Timer extends React.Component {
 						clearInterval(this.secondsInterval)
 						
 							//show notification
-					 	const notification = new Notification("Time Out!!", {
+					 	Notification("Time Out!!", {
 					 		body: "Time set on timR has ended",
 					 		icon: require("../images/logo.png")
 					 	})

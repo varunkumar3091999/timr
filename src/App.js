@@ -8,11 +8,7 @@ import './App.css';
 import Timer from "./components/Timer";
 import StopWatch from "./components/StopWatch";
 class App  extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-
+  
   render() {
 
     return(
