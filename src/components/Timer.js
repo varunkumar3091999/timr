@@ -98,9 +98,9 @@ class Timer extends React.Component {
 
 	 reset = () => {
 	 	this.setState({
-	 		seconds: "00",
-	 		minutes: "00",
-	 		hours: "00"
+	 		seconds: 0,
+	 		minutes: 0,
+	 		hours: 0
 	 	})
 	 	clearInterval(this.secondsInterval);
 
@@ -115,6 +115,11 @@ class Timer extends React.Component {
 			for (var i = 0; i < elements.length; i++) {
 					elements[i].disabled =false;
 			}
+
+		// var decrement = document.getElementsByClassName("Dec");
+		// 	for (var i = 0; i < decrement.length; i++) {
+		// 			decrement[i].disabled =false;
+		// 	}
 		//
 	 }
 
