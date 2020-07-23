@@ -187,9 +187,7 @@ class Timer extends React.Component {
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
 				<img src={require("../images/logo.png")} alt="logo" className="logo"  />
-				<div>
-					<Link to="/stopwatch" className="Link">to Stopwatch<i className="fa fa-link" aria-hidden="true"></i></Link>
-				</div>
+				
 				<div className="timer">
 					<div>
 						<button onClick={this.hoursInc} className="incDec"><i className="fa fa-caret-up" aria-hidden="true"></i></button>
@@ -226,7 +224,11 @@ class Timer extends React.Component {
 					className="button"
 				><i className="fa fa-refresh" aria-hidden="true" /></button>
 
-				
+				<div>
+					<button className="Link">
+						<Link to="/stopwatch" className="Link">to Stopwatch<i className="fa fa-link" aria-hidden="true"></i></Link>
+					</button>
+				</div>
 			</div>
 		)
 	}
