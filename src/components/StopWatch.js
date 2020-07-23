@@ -1,5 +1,7 @@
 import React from "react";
 
+import {Link} from 'react-router-dom';
+
 import "../App.css";
 // @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
@@ -90,7 +92,9 @@ class StopWatch extends React.Component {
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 				
 				<img src={require("../images/logo.png")} alt="logo" className="logo"  />
-
+				<div>
+					<Link to="/" className="Link">Timer<i class="fa fa-link" aria-hidden="true"></i></Link>
+				</div>
 				<h1 className="h1">{hours} : {minutes} : {seconds}</h1>
 				<button 
 					onClick={this.startStopWatch} 

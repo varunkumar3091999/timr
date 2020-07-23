@@ -94,6 +94,14 @@ button:disabled {
   font-size: 4rem;
 }
 
+.Link{
+  text-decoration: none;
+  color: #eee;
+  font-size: 2rem;
+  font-weight: 900;
+  
+}
+
 
 .timer {
   display: flex;

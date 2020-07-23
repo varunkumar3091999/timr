@@ -1,5 +1,7 @@
 import React from "react";
 
+import {Link} from 'react-router-dom';
+
 import "../App.css"
 
 
@@ -18,6 +20,10 @@ class Timer extends React.Component {
 
 	componentDidMount() {
 
+
+			// if(this.state.hours===0 && this.state.minutes===0 && this.state.seconds===0){
+			// 	document.getElementById("Dec").disabled = true;
+			// }
 
 			//disabling buttons when everything in 0
 			document.getElementById("start").disabled = true;
@@ -107,6 +113,9 @@ class Timer extends React.Component {
 		document.getElementById("reset").disabled = false;
 	 }
 	 secondsDec = () => {
+	 	if(this.state.seconds===0){
+	 		return
+	 	}
 	 	this.setState({
 	 		seconds: parseInt(this.state.seconds - 1)
 	 	})
@@ -120,6 +129,9 @@ class Timer extends React.Component {
 		document.getElementById("reset").disabled = false;
 	 }
 	 minutesDec = () => {
+	 	if(this.state.minutes===0){
+	 		return
+	 	}
 	 	this.setState({
 	 		minutes: parseInt(this.state.minutes - 1)
 	 	})
@@ -133,6 +145,9 @@ class Timer extends React.Component {
 		document.getElementById("reset").disabled = false;
 	 }
 	 hoursDec = () => {
+	 	if(this.state.hours===0){
+	 		return
+	 	}
 	 	this.setState({
 	 		hours: parseInt(this.state.hours - 1)
 	 	})
@@ -146,22 +161,24 @@ class Timer extends React.Component {
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
 				<img src={require("../images/logo.png")} alt="logo" className="logo"  />
-
+				<div>
+					<Link to="/stopwatch" className="Link">Stop watch<i class="fa fa-link" aria-hidden="true"></i></Link>
+				</div>
 				<div className="timer">
 					<div>
 						<button onClick={this.hoursInc} className="incDec"><i className="fa fa-caret-up" aria-hidden="true"></i></button>
 						<h1 className="h1">{hours}</h1>
-						<button onClick={this.hoursDec} className="incDec"><i className="fa fa-caret-down" aria-hidden="true"></i></button>
+						<button onClick={this.hoursDec} className="incDec  Dec"><i className="fa fa-caret-down" aria-hidden="true"></i></button>
 					</div>
 					<div>
 						<button onClick={this.minutesInc} className="incDec"><i className="fa fa-caret-up" aria-hidden="true"></i></button>
 						<h1 className="h1">:{minutes}:</h1>
-						<button onClick={this.minutesDec} className="incDec"><i className="fa fa-caret-down" aria-hidden="true"></i></button>
+						<button onClick={this.minutesDec} className="incDec  Dec"><i className="fa fa-caret-down" aria-hidden="true"></i></button>
 					</div>
 					<div>
 						<button onClick={this.secondsInc} className="incDec"><i className="fa fa-caret-up" aria-hidden="true"></i></button>
 						<h1 className="h1">{seconds}</h1>
-						<button onClick={this.secondsDec} className="incDec"><i className="fa fa-caret-down" aria-hidden="true"></i></button>
+						<button onClick={this.secondsDec} className="incDec Dec"><i className="fa fa-caret-down" aria-hidden="true"></i></button>
 					</div>
 				</div>
 
