@@ -30,6 +30,18 @@ class Timer extends React.Component {
 			document.getElementById("reset").disabled = true;
 	}
 
+	//show notification
+	showNotification = () => {
+		const notification =  new Notification("Time Out!!", {
+	 		body: "Time set on timR has ended",
+	 		icon: require("../images/logo.png")
+	 	})
+
+	 	notification.onClick = (e) => {
+	 		window.location.href = "/"
+	 	}
+	}
+
 	startTimer = () => {
 
 		
@@ -67,7 +79,7 @@ class Timer extends React.Component {
 
 					if(this.state.seconds < 1 && this.state.minutes < 1) {
 						clearInterval(this.secondsInterval)
-
+						this.showNotification();
 						document.getElementById("start").disabled = true;
 					 	document.getElementById("pause").disabled = true;
 					 	document.getElementById("reset").disabled = true;
@@ -78,17 +90,6 @@ class Timer extends React.Component {
 						for (var j = 0; j < element.length; j++) {
   							element[j].disabled =false;
 						}
-					//
-						
-							//show notification
-					const notification =  new Notification("Time Out!!", {
-					 		body: "Time set on timR has ended",
-					 		icon: require("../images/logo.png")
-					 	})
-
-					 	notification.onClick = (e) => {
-					 		window.location.href = "/"
-					 	}
 					}
 				}, 1000)
 

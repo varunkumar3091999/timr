@@ -20,8 +20,15 @@ class StopWatch extends React.Component {
 
 
 
-	componentDidMount() {
-		console.log(this.state.seconds)
+	showNotification = () => {
+		const notification = new Notification("One Hour!", {
+		 body: `${this.state.hours} hour(s) has beed passed `,
+		 icon: require("../images/logo.png")
+ 	})
+
+ 	notification.onClick = (e) => {
+		 window.location.href = "/StopWatch"
+	}
 	}
 
 	startStopWatch = () => {
@@ -52,14 +59,8 @@ class StopWatch extends React.Component {
 	 				hours: parseInt(this.state.hours + 1),
 	 			})
 	 			//show notification
-			const notification = new Notification("One Hour!", {
-					 body: `${this.state.hours} hour(s) has beed passed `,
-					 icon: require("../images/logo.png")
-			 	})
-
-			 	notification.onClick = (e) => {
-					 window.location.href = "/StopWatch"
-				}
+	 			this.showNotification();
+			
 	 		}, 3600000)
 
 	 	document.getElementById("startStopWatch").disabled = true;
