@@ -27,9 +27,7 @@ class StopWatch extends React.Component {
 	startStopWatch = () => {
 
 			//Checking if the user gave access the the notificationsNotifications
-		 	if(Notification.permissiont === "granted") {
-		 		alert("we have permission");
-		 	} else if(Notification.permission !== "denied"){
+		 	 if(Notification.permission !== "denied"){
 		 		Notification.requestPermission().then((permission) => {
 		 			console.log(permission)
 		 		})
@@ -55,7 +53,8 @@ class StopWatch extends React.Component {
 	 			})
 	 			//show notification
 			const notification = new Notification("One Hour!", {
-					 body: `${this.state.hours} hour(s) has beed passed `
+					 body: `${this.state.hours} hour(s) has beed passed `,
+					 icon: require("../images/logo.png")
 			 	})
 
 			 	notification.onClick = (e) => {

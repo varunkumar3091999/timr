@@ -20,7 +20,6 @@ class Timer extends React.Component {
 
 	componentDidMount() {
 
-
 			// if(this.state.hours===0 && this.state.minutes===0 && this.state.seconds===0){
 			// 	document.getElementById("Dec").disabled = true;
 			// }
@@ -33,18 +32,18 @@ class Timer extends React.Component {
 
 	startTimer = () => {
 
-		//Checking if the user gave access the the notificationsNotifications
-		 	if(Notification.permissiont === "granted") {
-		 		alert("we have permission");
-		 	} else if(Notification.permission !== "denied"){
-		 		Notification.requestPermission().then((permission) => {
-		 			console.log(permission)
-		 		})
-		 	}	
+		
 
 		if(this.state.hours===0 && this.state.minutes===0 && this.state.seconds===0) {
 	 		return
 	 	}
+
+	 	//Checking if the user gave access the the notificationsNotifications
+		 	if(Notification.permission !== "denied"){
+		 		Notification.requestPermission().then((permission) => {
+		 			console.log(permission)
+		 		})
+		 	}
 		
 		this.secondsInterval = setInterval(() => {
 					
